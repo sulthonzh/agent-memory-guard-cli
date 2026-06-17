@@ -1,0 +1,54 @@
+{
+  "name": "agent-memory-guard-cli",
+  "version": "1.0.0",
+  "description": "AI Agent Memory Integrity CLI - Validates and protects AI agent persistent memory from poisoning attacks",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "agent-memory-guard": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/cli.ts",
+    "test": "node --test dist/**/*.test.js",
+    "test:watch": "node --test --watch dist/**/*.test.js",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix"
+  },
+  "keywords": [
+    "ai",
+    "memory",
+    "security",
+    "guard",
+    "protection",
+    "cli",
+    "integrity",
+    "validation",
+    "agent",
+    "langchain",
+    "llamaindex",
+    "crewai"
+  ],
+  "author": "Sulthonzh",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ]
+}

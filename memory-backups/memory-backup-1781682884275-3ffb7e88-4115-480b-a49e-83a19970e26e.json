@@ -1,0 +1,29 @@
+{
+  "id": "3ffb7e88-4115-480b-a49e-83a19970e26e",
+  "timestamp": 1781682884275,
+  "hash": "3b805146ca7502d3c04e5592d5714c9e6d47e7f6d08f51813cdf52508d6a607a",
+  "data": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello, how are you?",
+        "timestamp": 1672531200000
+      },
+      {
+        "role": "assistant",
+        "content": "I'm doing well, thank you for asking!",
+        "timestamp": 1672531201000
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "created": 1672531200000,
+      "framework": "langchain"
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "size": 365,
+    "checksumAlgorithm": "sha256"
+  }
+}

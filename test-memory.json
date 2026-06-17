@@ -1,0 +1,11 @@
+{
+  "messages": [
+    { "role": "user", "content": "Hello, how are you?", "timestamp": 1672531200000 },
+    { "role": "assistant", "content": "I'm doing well, thank you for asking!", "timestamp": 1672531201000 }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "created": 1672531200000,
+    "framework": "langchain"
+  }
+}
