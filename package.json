@@ -47,8 +47,22 @@
     "typescript": "^5.0.0"
   },
   "files": [
-    "dist/**/*",
+    "dist/cli.js",
+    "dist/cli.d.ts",
+    "dist/memory-validator.js",
+    "dist/memory-validator.d.ts",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sulthonzh/agent-memory-guard-cli.git"
+  },
+  "homepage": "https://github.com/sulthonzh/agent-memory-guard-cli#readme",
+  "bugs": {
+    "url": "https://github.com/sulthonzh/agent-memory-guard-cli/issues"
+  }
 }
