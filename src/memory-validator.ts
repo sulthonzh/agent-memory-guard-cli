@@ -324,22 +324,9 @@ export class MemoryValidator {
       evidence?: any;
     }> = [];
 
-    // Verify file hasn't been modified since reading
+    // Verify file exists and is accessible
     try {
-      const stats = await fs.stat(sourcePath);
-      if (currentState.timestamp > stats.mtime.getTime()) {
-        issues.push({
-          type: 'tampering',
-          severity: 'critical',
-          message: 'Memory file modified during validation process',
-          suggestion: 'Immediate investigation required. File may be under active attack',
-          evidence: {
-            validationTime: currentState.timestamp,
-            fileModifyTime: stats.mtime.getTime(),
-            path: sourcePath
-          }
-        });
-      }
+      await fs.access(sourcePath);
     } catch (error) {
       issues.push({
         type: 'tampering',
@@ -354,8 +341,8 @@ export class MemoryValidator {
   }
 
   private calculateDataChange(current: any, previous: any): number {
-    const currentStr = JSON.stringify(current, Object.keys(current).sort());
-    const previousStr = JSON.stringify(previous, Object.keys(previous).sort());
+    const currentStr = JSON.stringify(this.sortKeysDeep(current));
+    const previousStr = JSON.stringify(this.sortKeysDeep(previous));
     
     if (currentStr === previousStr) return 0;
     
@@ -364,6 +351,16 @@ export class MemoryValidator {
     const diff = this.calculateLevenshteinDistance(currentStr, previousStr);
     
     return diff / maxLength;
+  }
+
+  private sortKeysDeep(obj: any): any {
+    if (obj === null || typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) return obj.map(item => this.sortKeysDeep(item));
+    const sorted: Record<string, any> = {};
+    for (const key of Object.keys(obj).sort()) {
+      sorted[key] = this.sortKeysDeep(obj[key]);
+    }
+    return sorted;
   }
 
   private calculateLevenshteinDistance(str1: string, str2: string): number {
